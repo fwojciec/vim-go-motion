@@ -88,6 +88,17 @@ function! go#util#EchoInfo(msg)
   call s:echo(a:msg, 'Debug')
 endfunction
 
+function! s:exec(cmd, ...) abort
+  let l:bin = a:cmd[0]
+  let l:cmd = go#util#Shelljoin([l:bin] + a:cmd[1:])
+  if go#util#HasDebug('shell-commands')
+    call go#util#EchoInfo('shell command: ' . l:cmd)
+  endif
+
+  let l:out = call('s:system', [l:cmd] + a:000)
+  return [l:out, go#util#ShellError()]
+endfunction
+
 " restore Vi compatibility settings
 let &cpo = s:cpo_save
 unlet s:cpo_save

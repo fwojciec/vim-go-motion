@@ -7,6 +7,15 @@ let b:did_ftplugin = 1
 let s:cpo_save = &cpo
 set cpo&vim
 
+setlocal formatoptions-=t
+
+setlocal comments=s1:/*,mb:*,ex:*/,://
+setlocal commentstring=//\ %s
+
+setlocal noexpandtab
+
+compiler go
+
 onoremap <buffer> <silent> af :<c-u>call go#textobj#Function('a')<cr>
 xnoremap <buffer> <silent> af :<c-u>call go#textobj#Function('a')<cr>
 

@@ -87,6 +87,10 @@ function! go#util#Shelljoin(arglist, ...) abort
   endtry
 endfunction
 
+function! go#util#ShellError() abort
+  return v:shell_error
+endfunction
+
 function! go#util#EchoSuccess(msg)
   call s:echo(a:msg, 'Function')
 endfunction

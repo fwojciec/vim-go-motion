@@ -29,12 +29,12 @@ function! go#util#Exec(cmd, ...) abort
 
   let l:bin = a:cmd[0]
 
-  " " Lookup the full path, respecting settings such as 'go_bin_path'. On errors,
-  " " CheckBinPath will show a warning for us.
-  " let l:bin = go#path#CheckBinPath(l:bin)
-  " if empty(l:bin)
-  "   return ['', 1]
-  " endif
+  " Lookup the full path, respecting settings such as 'go_bin_path'. On errors,
+  " CheckBinPath will show a warning for us.
+  let l:bin = go#path#CheckBinPath(l:bin)
+  if empty(l:bin)
+    return ['', 1]
+  endif
 
   " Finally execute the command using the full, resolved path. Do not pass the
   " unmodified command as the correct program might not exist in $PATH.

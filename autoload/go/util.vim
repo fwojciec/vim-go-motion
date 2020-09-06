@@ -107,10 +107,6 @@ endfunction
 function! s:exec(cmd, ...) abort
   let l:bin = a:cmd[0]
   let l:cmd = go#util#Shelljoin([l:bin] + a:cmd[1:])
-  if go#util#HasDebug('shell-commands')
-    call go#util#EchoInfo('shell command: ' . l:cmd)
-  endif
-
   let l:out = call('s:system', [l:cmd] + a:000)
   return [l:out, go#util#ShellError()]
 endfunction

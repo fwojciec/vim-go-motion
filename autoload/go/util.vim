@@ -24,14 +24,6 @@ function! go#util#IsWin() abort
   return has('win32')
 endfunction
 
- " Checks if using:
- " 1) Windows system,
- " 2) And has cygpath executable,
- " 3) And uses *sh* as 'shell'
-function! go#util#IsUsingCygwinShell()
-  return go#util#IsWin() && executable('cygpath') && &shell =~ '.*sh.*'
-endfunction
-
 " Returns the byte offset for line and column
 function! go#util#Offset(line, col) abort
   if &encoding != 'utf-8'
@@ -150,5 +142,3 @@ endfunction
 " restore Vi compatibility settings
 let &cpo = s:cpo_save
 unlet s:cpo_save
-
-" vim: sw=2 ts=2 et

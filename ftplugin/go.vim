@@ -36,5 +36,3 @@ xnoremap <buffer> <silent> [[ :<c-u>call go#textobj#FunctionJump('v', 'prev')<cr
 " restore Vi compatibility settings
 let &cpo = s:cpo_save
 unlet s:cpo_save
-
-" vim: sw=2 ts=2 et

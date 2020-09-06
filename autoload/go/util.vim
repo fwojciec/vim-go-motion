@@ -24,6 +24,13 @@ function! go#util#IsWin() abort
   return has('win32')
 endfunction
 
+ " Checks if using:
+ " 1) Windows system,
+ " 2) And has cygpath executable,
+ " 3) And uses *sh* as 'shell'
+function! go#util#IsUsingCygwinShell()
+  return go#util#IsWin() && executable('cygpath') && &shell =~ '.*sh.*'
+endfunction
 
 " Returns the byte offset for line and column
 function! go#util#Offset(line, col) abort

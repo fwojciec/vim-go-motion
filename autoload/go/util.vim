@@ -83,6 +83,20 @@ function! go#util#ShellError() abort
   return v:shell_error
 endfunction
 
+" Get all lines in the buffer as a a list.
+function! go#util#GetLines()
+  let buf = getline(1, '$')
+  if &encoding != 'utf-8'
+    let buf = map(buf, 'iconv(v:val, &encoding, "utf-8")')
+  endif
+  if &l:fileformat == 'dos'
+    " XXX: line2byte() depend on 'fileformat' option.
+    " so if fileformat is 'dos', 'buf' must include '\r'.
+    let buf = map(buf, 'v:val."\r"')
+  endif
+  return buf
+endfunction
+
 function! go#util#EchoSuccess(msg)
   call s:echo(a:msg, 'Function')
 endfunction

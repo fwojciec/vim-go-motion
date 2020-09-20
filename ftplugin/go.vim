@@ -14,8 +14,6 @@ setlocal commentstring=//\ %s
 
 setlocal noexpandtab
 
-compiler go
-
 onoremap <buffer> <silent> af :<c-u>call go#textobj#Function('a')<cr>
 xnoremap <buffer> <silent> af :<c-u>call go#textobj#Function('a')<cr>
 
